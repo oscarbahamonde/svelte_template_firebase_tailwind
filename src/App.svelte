@@ -3,12 +3,10 @@
 import { Router, Route, Link } from "svelte-navigator";
   import Tailwindcss from "./Tailwindcss.svelte";
   import Login from "./routes/Login.svelte";
+  import Profile from './routes/Profile.svelte';
   import PrivateRoute from "./routes/PrivateRoute.svelte";
   import { user } from "./store";
 
-  function handleLogout() {
-    $user = null;
-  }
 </script>
 <Tailwindcss/>
 <Router>
@@ -38,8 +36,7 @@ import { Router, Route, Link } from "svelte-navigator";
     </Route>
 
     <PrivateRoute path="profile" let:location>
-      <h3>Welcome {$user.username}</h3>
-      <button on:click={handleLogout}>Logout</button>
+      <Profile usr={$user}  />
     </PrivateRoute>
   </main>
 </Router>

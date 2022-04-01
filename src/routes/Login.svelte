@@ -56,7 +56,7 @@
   let handleGithub = async () => {
     try {
       const usr = await signInWithPopup(auth, new GithubAuthProvider());
-      $user = usr;
+      $user = usr.user;
       const from = ($location.state && $location.state.from) || "/";
       navigate(from, { replace: true });
     } catch (err) {
